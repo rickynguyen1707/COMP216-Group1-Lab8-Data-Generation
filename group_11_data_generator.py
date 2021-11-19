@@ -15,6 +15,6 @@ class DataGenerator:
     def getDataInRange(self):
         return (self.rangeEnd-self.rangeStart)*(self.__randomNormalizer())+(self.rangeStart)
 
-#testing code for class
+#test code for class
 #x = DataGenerator(5,0,10)
 #print(x.getDataInRange())
