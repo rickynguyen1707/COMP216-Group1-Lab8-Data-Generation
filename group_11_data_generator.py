@@ -12,16 +12,9 @@ class DataGenerator:
         randomNum = random.gauss(self.rangeStart,self.rangeEnd)
         return randomNum
 
-    
-
-
-#data = DataGenerator()
-#data.randomNormalizer()
+    def getDataInRange(self):
+        return (self.rangeEnd-self.rangeStart)*(self.__randomNormalizer())+(self.rangeStart)
 
 #testing code for class
-#     def generate(self):
-#         for x in range(self.numOfValues):
-#             print(random.randint(self.rangeStart, self.rangeEnd))
-
-# x = DataGenerator(5, 0, 10)
-# x.generate()
+#x = DataGenerator(5,0,10)
+#print(x.getDataInRange())
