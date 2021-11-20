@@ -8,13 +8,18 @@ class DataGenerator:
         self.rangeStart = rangeStart
         self.rangeEnd = rangeEnd
 
-    def __randomNormalizer(self):
-        randomNum = random.gauss(self.rangeStart,self.rangeEnd)
+    def __randomGenerator(self):
+        randomNum = random.randint(self.rangeStart,self.rangeEnd)
         return randomNum
 
+    def __randomPlotGenerator(self, minVal, maxVal):
+        randomArr=[self.__randomGenerator(minVal,maxVal) for num in range(self.numOfValues)]
+        return randomArr
+
     def getDataInRange(self):
-        return (self.rangeEnd-self.rangeStart)*(self.__randomNormalizer())+(self.rangeStart)
+        return (self.rangeEnd-self.rangeStart)*(self.__randomPlotGenerator(self.rangeStart, self.rangeEnd))+(self.rangeStart)
 
 #test code for class
-#x = DataGenerator(5,0,10)
+# x = DataGenerator()
 #print(x.getDataInRange())
+# print(x)
