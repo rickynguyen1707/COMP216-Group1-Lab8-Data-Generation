@@ -29,9 +29,9 @@ class DataGenerator:
 
     def plot(self, points):
         plt.plot(points, color='g')
-        plt.xlabel("Days since going public")
-        plt.ylabel("Price ($)")
-        plt.title("Stock Prices")
+        plt.xlabel("Days driven")
+        plt.ylabel("Gasoline (Liters)")
+        plt.title("Fuel Indicator")
         plt.show()
 
 
