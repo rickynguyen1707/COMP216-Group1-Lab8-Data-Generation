@@ -10,20 +10,32 @@ class DataGenerator:
         self.range_end = range_end
 
     def __gen_points(self):
-        return np.array([random.random() for _ in range(self.num_vals)])
+        def growth(series):
+            m = (random.random() - 0.5) * 2
+            return series * m
+
+        def oscillation(i):
+            delta = random.random() - 0.5
+            coeff = random.randint(1,10)
+            return i + (coeff * delta)
+
+        series = growth(np.array(range(self.num_vals)))
+        series = np.array([oscillation(i) for i in series])
+        # scale it down to the mean of 0.5 and std of 1:
+        return ((series - series.mean()) / (series.max() - series.min())) + 0.5
 
     def data_in_range(self):
         return (self.range_end - self.range_start) * self.__gen_points() + self.range_start
 
     def plot(self, points):
         plt.plot(points, color='g')
-        plt.xlabel("Day of Month (Nov)")
+        plt.xlabel("Days since going public")
         plt.ylabel("Price ($)")
         plt.title("Stock Prices")
         plt.show()
 
 
 if __name__ == '__main__':
-    gen = DataGenerator(30, 112, 125)
+    gen = DataGenerator(75, 112, 125)
     data = gen.data_in_range()
     gen.plot(data)
