@@ -11,7 +11,7 @@ class DataGenerator:
 
     def __gen_points(self):
         def growth(series):
-            m = random.random()
+            m = (random.random() - 0.5) * 2
             return series * m
 
         def oscillation(i):
@@ -36,6 +36,6 @@ class DataGenerator:
 
 
 if __name__ == '__main__':
-    gen = DataGenerator(20, 0, 100)
+    gen = DataGenerator(75, 112, 125)
     data = gen.data_in_range()
     gen.plot(data)
